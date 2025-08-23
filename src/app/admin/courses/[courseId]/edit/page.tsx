@@ -22,12 +22,13 @@ import { notFound } from 'next/navigation';
 export default async function EditCoursePage({
     params,
 }: {
-    params: Promise<{ courseId: string }>;
+    // params: Promise<{ courseId: string }>;
+    params: { courseId: string };
 }) {
-    const { courseId } = await params;
-    const course = await getCourse(courseId);
-
-    if (course == null) return notFound();
+    // const { courseId } = params;
+    // const course = await getCourse(courseId);
+    const course = await getCourse(params.courseId);
+    if (!course) return notFound();
 
     return (
         <div className="container my-8 px-12">
