@@ -42,7 +42,7 @@ export function CourseForm({
             course == null ? createCourseAction : updateCourseAction.bind(null, course.id);
         const data = await action(values);
 
-        actionToast({ actionData: data });
+        // actionToast({ actionData: data });
     }
 
     const handleOnInvalid = () => {
