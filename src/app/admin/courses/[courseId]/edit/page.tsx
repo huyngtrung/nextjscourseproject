@@ -62,7 +62,7 @@ export default async function EditCoursePage({ params }: PageProps) {
                         <CardContent>
                             <SortableSectionList
                                 courseId={course.id}
-                                sections={course.courseSections}
+                                sections={course.courseSections ?? []}
                             ></SortableSectionList>
                         </CardContent>
                     </Card>
@@ -83,7 +83,7 @@ export default async function EditCoursePage({ params }: PageProps) {
                                 </CardTitle>
                                 <LessonFormDialog
                                     defaultSectionId={course.id}
-                                    sections={course.courseSections}
+                                    sections={course.courseSections ?? []}
                                 >
                                     <DialogTrigger asChild>
                                         <Button
@@ -98,7 +98,7 @@ export default async function EditCoursePage({ params }: PageProps) {
                             <CardContent>
                                 <SortableLessonList
                                     sections={course.courseSections}
-                                    lessons={section.lessons}
+                                    lessons={section.lessons ?? []}
                                 ></SortableLessonList>
                             </CardContent>
                         </Card>
