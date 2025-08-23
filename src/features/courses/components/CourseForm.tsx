@@ -18,7 +18,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 // import { createCourse, updateCourse } from '../actions/courses';
 import { actionToast } from '@/lib/use-toast';
-import { createCourseAction, updateCourseAction } from '@/app/admin/courses/actions';
+import { createCourseAction, updateCourseAction } from '@/app/admin/courses/new/actions';
 
 export function CourseForm({
     course,
