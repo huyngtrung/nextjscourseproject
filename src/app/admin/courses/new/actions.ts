@@ -7,6 +7,7 @@ import z from 'zod';
 
 type CourseInput = z.infer<typeof courseSchema>;
 
+// test
 export async function createCourseAction(data: CourseInput) {
     const course = await createCourse(data);
     redirect(`/admin/courses/${course.id}/edit`);
