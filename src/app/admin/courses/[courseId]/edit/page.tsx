@@ -18,15 +18,16 @@ import { asc, eq } from 'drizzle-orm';
 import { BookIcon, EyeClosedIcon, PaperclipIcon, PlusIcon } from 'lucide-react';
 import { cacheTag } from 'next/dist/server/use-cache/cache-tag';
 import { notFound } from 'next/navigation';
-
-export default async function EditCoursePage({
-    params,
-}: {
-    params: { courseId: string };
-    // params: Promise<{ courseId: string }>;
-}) {
-    const { courseId } = params;
-    // const { courseId } = await params;
+interface PageProps {
+    params: Promise<{ courseId: string }>;
+}
+export default async function EditCoursePage({ params }: PageProps) {
+    //     {
+    //     params,
+    // }: {
+    //     // params: Promise<{ courseId: string }>;
+    // }
+    const { courseId } = await params;
     const course = await getCourse(courseId);
 
     if (course == null) return notFound();
