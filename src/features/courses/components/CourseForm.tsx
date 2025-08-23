@@ -16,8 +16,9 @@ import { RequiredLabelIcon } from '@/components/RequiredLabelIcon';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { createCourse, updateCourse } from '../actions/courses';
+// import { createCourse, updateCourse } from '../actions/courses';
 import { actionToast } from '@/lib/use-toast';
+import { createCourseAction, updateCourseAction } from '@/app/admin/courses/actions';
 
 export function CourseForm({
     course,
@@ -37,7 +38,8 @@ export function CourseForm({
     });
 
     async function handleOnSubmit(values: z.infer<typeof courseSchema>) {
-        const action = course == null ? createCourse : updateCourse.bind(null, course.id);
+        const action =
+            course == null ? createCourseAction : updateCourseAction.bind(null, course.id);
         const data = await action(values);
 
         actionToast({ actionData: data });
