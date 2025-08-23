@@ -64,7 +64,7 @@ export default async function EditCoursePage({
                         </CardContent>
                     </Card>
                     <hr className="my-4" />
-                    {course.courseSections.map((section) => (
+                    {course.courseSections?.map((section) => (
                         <Card key={section.id} className="border-l-12 border-amber-700">
                             <CardHeader className="flex items-center flex-row justify-between gap-4">
                                 <CardTitle
