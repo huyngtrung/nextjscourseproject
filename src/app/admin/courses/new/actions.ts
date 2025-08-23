@@ -2,6 +2,14 @@
 
 import { createCourse, updateCourse, deleteCourse } from '@/features/courses/actions/courses';
 
-export const createCourseAction = createCourse;
-export const updateCourseAction = updateCourse;
-export const deleteCourseAction = deleteCourse;
+export async function createCourseAction(data: any) {
+    return await createCourse(data);
+}
+
+export async function updateCourseAction(id: string, data: any) {
+    return await updateCourse(id, data);
+}
+
+export async function deleteCourseAction(id: string) {
+    return await deleteCourse(id);
+}
