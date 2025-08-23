@@ -22,8 +22,8 @@ import { notFound } from 'next/navigation';
 export default async function EditCoursePage({
     params,
 }: {
-    // params: Promise<{ courseId: string }>;
     params: { courseId: string };
+    // params: Promise<{ courseId: string }>;
 }) {
     // const { courseId } = params;
     // const course = await getCourse(courseId);
