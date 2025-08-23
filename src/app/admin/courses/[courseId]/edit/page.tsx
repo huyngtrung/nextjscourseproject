@@ -65,42 +65,45 @@ export default async function EditCoursePage({ params }: PageProps) {
                         </CardContent>
                     </Card>
                     <hr className="my-4" />
-                    {course?.courseSections?.map((section) => (
-                        <Card key={section.id} className="border-l-12 border-amber-700">
-                            <CardHeader className="flex items-center flex-row justify-between gap-4">
-                                <CardTitle
-                                    className={cn(
-                                        'flex items-center gap-2',
-                                        section.status === 'private' && 'text-muted-foreground',
-                                    )}
-                                >
-                                    {section.status === 'private' && <EyeClosedIcon />}
-                                    <PaperclipIcon className="h-4 w-4 text-black" />
-                                    <span className="text-muted-foreground">All Lessons in: </span>
-                                    <span className="italic text-primary">{section.name}</span>
-                                </CardTitle>
-                                <LessonFormDialog
-                                    defaultSectionId={course.id}
-                                    sections={course.courseSections}
-                                >
-                                    <DialogTrigger asChild>
-                                        <Button
-                                            variant="outline"
-                                            className="cursor-pointer text-base"
-                                        >
-                                            <PlusIcon /> New Lesson
-                                        </Button>
-                                    </DialogTrigger>
-                                </LessonFormDialog>
-                            </CardHeader>
-                            <CardContent>
-                                <SortableLessonList
-                                    sections={course.courseSections}
-                                    lessons={section.lessons}
-                                ></SortableLessonList>
-                            </CardContent>
-                        </Card>
-                    ))}
+                    {Array.isArray(course.courseSections) &&
+                        course.courseSections.map((section) => (
+                            <Card key={section.id} className="border-l-12 border-amber-700">
+                                <CardHeader className="flex items-center flex-row justify-between gap-4">
+                                    <CardTitle
+                                        className={cn(
+                                            'flex items-center gap-2',
+                                            section.status === 'private' && 'text-muted-foreground',
+                                        )}
+                                    >
+                                        {section.status === 'private' && <EyeClosedIcon />}
+                                        <PaperclipIcon className="h-4 w-4 text-black" />
+                                        <span className="text-muted-foreground">
+                                            All Lessons in:{' '}
+                                        </span>
+                                        <span className="italic text-primary">{section.name}</span>
+                                    </CardTitle>
+                                    <LessonFormDialog
+                                        defaultSectionId={course.id}
+                                        sections={course.courseSections}
+                                    >
+                                        <DialogTrigger asChild>
+                                            <Button
+                                                variant="outline"
+                                                className="cursor-pointer text-base"
+                                            >
+                                                <PlusIcon /> New Lesson
+                                            </Button>
+                                        </DialogTrigger>
+                                    </LessonFormDialog>
+                                </CardHeader>
+                                <CardContent>
+                                    <SortableLessonList
+                                        sections={course.courseSections}
+                                        lessons={section.lessons}
+                                    ></SortableLessonList>
+                                </CardContent>
+                            </Card>
+                        ))}
                 </TabsContent>
                 <TabsContent value="details">
                     <Card>
