@@ -21,13 +21,15 @@ import { notFound } from 'next/navigation';
 interface PageProps {
     params: Promise<{ courseId: string }>;
 }
+
 export default async function EditCoursePage({ params }: PageProps) {
     //     {
     //     params,
     // }: {
     //     // params: Promise<{ courseId: string }>;
     // }
-    const { courseId } = await params;
+    const { courseId } = await Promise.resolve(params);
+    // const { courseId } = await params;
     const course = await getCourse(courseId);
 
     if (course == null) return notFound();
