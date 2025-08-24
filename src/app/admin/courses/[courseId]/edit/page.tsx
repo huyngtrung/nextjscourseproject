@@ -148,15 +148,5 @@ async function getCourse(id: string) {
                 },
             },
         },
-    }).then((res) =>
-        res
-            ? {
-                  ...res,
-                  courseSections: (res.courseSections ?? []).map((s) => ({
-                      ...s,
-                      lessons: s.lessons ?? [],
-                  })),
-              }
-            : null,
-    );
+    });
 }
