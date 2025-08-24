@@ -32,7 +32,10 @@ export default async function EditCoursePage({ params }: PageProps) {
     // const { courseId } = await params;
     const course = await getCourse(courseId);
 
-    if (course == null) return notFound();
+    if (!course) return notFound();
+
+    const sections = course.courseSections ?? [];
+
     return (
         <div className="container my-8 px-12">
             <PageHeader
@@ -67,8 +70,9 @@ export default async function EditCoursePage({ params }: PageProps) {
                         </CardContent>
                     </Card>
                     <hr className="my-4" />
-                    {(course.courseSections ?? []).length > 0 ? (
-                        course.courseSections.map((section) => (
+                    {sections.length > 0 ? (
+                        sections.map((section) => (
+                            // course.courseSections.map((section) => (
                             <Card key={section.id} className="border-l-12 border-amber-700">
                                 <CardHeader className="flex items-center flex-row justify-between gap-4">
                                     <CardTitle
