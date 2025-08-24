@@ -67,7 +67,7 @@ export default async function EditCoursePage({ params }: PageProps) {
                         </CardContent>
                     </Card>
                     <hr className="my-4" />
-                    {course.courseSections && course.courseSections.length > 0 ? (
+                    {(course.courseSections ?? []).length > 0 ? (
                         course.courseSections.map((section) => (
                             <Card key={section.id} className="border-l-12 border-amber-700">
                                 <CardHeader className="flex items-center flex-row justify-between gap-4">
