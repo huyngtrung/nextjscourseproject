@@ -149,7 +149,7 @@ async function getCourse(id: string) {
                   ...res,
                   courseSections: (res.courseSections ?? []).map((s) => ({
                       ...s,
-                      lessons: s.lessons ?? [], // ✅ luôn đảm bảo là []
+                      lessons: s.lessons ?? [],
                   })),
               }
             : null,
