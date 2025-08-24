@@ -65,7 +65,7 @@ export default async function EditCoursePage({
                         </CardContent>
                     </Card>
                     <hr className="my-4" />
-                    {sections.length > 0 ? (
+                    {/* {sections.length > 0 ? (
                         sections.map((section) => (
                             // course.courseSections.map((section) => (
                             <Card key={section.id} className="border-l-12 border-amber-700">
@@ -107,7 +107,7 @@ export default async function EditCoursePage({
                         ))
                     ) : (
                         <p className="text-muted-foreground italic">No sections yet...</p>
-                    )}
+                    )} */}
                 </TabsContent>
                 <TabsContent value="details">
                     <Card>
