@@ -61,7 +61,7 @@ export default async function EditCoursePage({ params }: PageProps) {
                         </CardHeader>
                         <CardContent>
                             <SortableSectionList
-                                courseId={course.id ?? []}
+                                courseId={course.id}
                                 sections={course.courseSections ?? []}
                             ></SortableSectionList>
                         </CardContent>
