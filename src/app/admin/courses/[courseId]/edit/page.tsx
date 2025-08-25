@@ -27,9 +27,7 @@ export default async function EditCoursePage({
     const { courseId } = await params;
     const course = await getCourse(courseId);
 
-    if (!course) return notFound();
-
-    const sections = course.courseSections ?? [];
+    if (course == null) return notFound();
 
     return (
         <div className="container my-8 px-12">
@@ -61,53 +59,46 @@ export default async function EditCoursePage({
                             <SortableSectionList
                                 courseId={course.id}
                                 sections={course.courseSections ?? []}
-                            ></SortableSectionList>
+                            />
                         </CardContent>
                     </Card>
                     <hr className="my-4" />
-                    {/* {sections.length > 0 ? (
-                        sections.map((section) => (
-                            // course.courseSections.map((section) => (
-                            <Card key={section.id} className="border-l-12 border-amber-700">
-                                <CardHeader className="flex items-center flex-row justify-between gap-4">
-                                    <CardTitle
-                                        className={cn(
-                                            'flex items-center gap-2',
-                                            section.status === 'private' && 'text-muted-foreground',
-                                        )}
-                                    >
-                                        {section.status === 'private' && <EyeClosedIcon />}
-                                        <PaperclipIcon className="h-4 w-4 text-black" />
-                                        <span className="text-muted-foreground">
-                                            All Lessons in:{' '}
-                                        </span>
-                                        <span className="italic text-primary">{section.name}</span>
-                                    </CardTitle>
-                                    <LessonFormDialog
-                                        defaultSectionId={section.id}
-                                        sections={course.courseSections ?? []}
-                                    >
-                                        <DialogTrigger asChild>
-                                            <Button
-                                                variant="outline"
-                                                className="cursor-pointer text-base"
-                                            >
-                                                <PlusIcon /> New Lesson
-                                            </Button>
-                                        </DialogTrigger>
-                                    </LessonFormDialog>
-                                </CardHeader>
-                                <CardContent>
-                                    <SortableLessonList
-                                        sections={course.courseSections ?? []}
-                                        lessons={section.lessons ?? []}
-                                    />
-                                </CardContent>
-                            </Card>
-                        ))
-                    ) : (
-                        <p className="text-muted-foreground italic">No sections yet...</p>
-                    )} */}
+                    {course.courseSections.map((section) => (
+                        <Card key={section.id} className="border-l-12 border-amber-700">
+                            <CardHeader className="flex items-center flex-row justify-between gap-4">
+                                <CardTitle
+                                    className={cn(
+                                        'flex items-center gap-2',
+                                        section.status === 'private' && 'text-muted-foreground',
+                                    )}
+                                >
+                                    {section.status === 'private' && <EyeClosedIcon />}
+                                    <PaperclipIcon className="h-4 w-4 text-black" />
+                                    <span className="text-muted-foreground">All Lessons in: </span>
+                                    <span className="italic text-primary">{section.name}</span>
+                                </CardTitle>
+                                <LessonFormDialog
+                                    defaultSectionId={section.id}
+                                    sections={course.courseSections ?? []}
+                                >
+                                    <DialogTrigger asChild>
+                                        <Button
+                                            variant="outline"
+                                            className="cursor-pointer text-base"
+                                        >
+                                            <PlusIcon /> New Lesson
+                                        </Button>
+                                    </DialogTrigger>
+                                </LessonFormDialog>
+                            </CardHeader>
+                            <CardContent>
+                                <SortableLessonList
+                                    sections={course.courseSections ?? []}
+                                    lessons={section.lessons ?? []}
+                                />
+                            </CardContent>
+                        </Card>
+                    ))}
                 </TabsContent>
                 <TabsContent value="details">
                     <Card>
@@ -138,8 +129,8 @@ async function getCourse(id: string) {
                         orderBy: asc(LessonTable.order),
                         columns: {
                             id: true,
-                            status: true,
                             name: true,
+                            status: true,
                             description: true,
                             youtubeVideoId: true,
                             sectionId: true,

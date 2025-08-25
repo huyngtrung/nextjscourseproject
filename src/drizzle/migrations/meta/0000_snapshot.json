@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "26214955-8720-44c6-9d71-2b67e3f4edf0",
+  "id": "b823bc90-7a98-4937-b500-e2621bd1fa58",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "courses": {
@@ -442,7 +442,7 @@
           "name": "stripe_session_id",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "payment_provider": {
@@ -452,9 +452,23 @@
           "notNull": true,
           "autoincrement": false
         },
+        "vnp_txn_ref": {
+          "name": "vnp_txn_ref",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
         "vnp_transaction_id": {
           "name": "vnp_transaction_id",
           "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "vnp_transaction_date": {
+          "name": "vnp_transaction_date",
+          "type": "varchar(14)",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -532,6 +546,18 @@
           "name": "purchases_stripe_session_id_unique",
           "columns": [
             "stripe_session_id"
+          ]
+        },
+        "purchases_vnp_transaction_id_unique": {
+          "name": "purchases_vnp_transaction_id_unique",
+          "columns": [
+            "vnp_transaction_id"
+          ]
+        },
+        "purchases_momo_transaction_id_unique": {
+          "name": "purchases_momo_transaction_id_unique",
+          "columns": [
+            "momo_transaction_id"
           ]
         }
       },

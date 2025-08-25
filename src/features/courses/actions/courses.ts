@@ -19,8 +19,8 @@ export async function createCourse(unsafeData: z.infer<typeof courseSchema>) {
     }
 
     const course = await insertCourse(data);
-    return { success: true, id: course.id };
-    // redirect(`/admin/courses/${course.id}/edit`);
+    // return { success: true, id: course.id };
+    redirect(`/admin/courses/${course.id}/edit`);
 }
 
 export async function updateCourse(id: string, unsafeData: z.infer<typeof courseSchema>) {
