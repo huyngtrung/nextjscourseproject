@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "b823bc90-7a98-4937-b500-e2621bd1fa58",
+  "id": "98d44d14-880a-41d6-b6d2-e900afe9be27",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "courses": {
@@ -12,8 +12,7 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "(UUID())"
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -31,19 +30,19 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         }
       },
       "indexes": {},
@@ -78,19 +77,19 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         }
       },
       "indexes": {},
@@ -142,8 +141,7 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "(UUID())"
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -176,19 +174,19 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         }
       },
       "indexes": {},
@@ -232,8 +230,7 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "(UUID())"
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -280,19 +277,19 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         }
       },
       "indexes": {},
@@ -330,8 +327,7 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "(UUID())"
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -371,19 +367,19 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         }
       },
       "indexes": {},
@@ -407,8 +403,7 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "(UUID())"
+          "autoincrement": false
         },
         "price_paid_in_cents": {
           "name": "price_paid_in_cents",
@@ -419,7 +414,7 @@
         },
         "product_details": {
           "name": "product_details",
-          "type": "json",
+          "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
@@ -482,26 +477,26 @@
         },
         "refunded_at": {
           "name": "refunded_at",
-          "type": "timestamp",
+          "type": "datetime",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         }
       },
       "indexes": {},
@@ -571,8 +566,7 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "(UUID())"
+          "autoincrement": false
         },
         "clerk_user_id": {
           "name": "clerk_user_id",
@@ -619,19 +613,19 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         }
       },
       "indexes": {},
@@ -673,19 +667,19 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         }
       },
       "indexes": {},
@@ -748,19 +742,19 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "datetime",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(NOW())"
+          "default": "(now())"
         }
       },
       "indexes": {},

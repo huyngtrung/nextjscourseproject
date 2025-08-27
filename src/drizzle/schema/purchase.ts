@@ -1,4 +1,4 @@
-import { mysqlTable, int, json, varchar, timestamp } from 'drizzle-orm/mysql-core';
+import { mysqlTable, int, text, varchar, datetime } from 'drizzle-orm/mysql-core';
 import { createdAt, id, updatedAt } from '../schemaHelpers';
 import { relations } from 'drizzle-orm';
 import { UserTable } from './user';
@@ -7,7 +7,7 @@ import { ProductTable } from './product';
 export const PurchaseTable = mysqlTable('purchases', {
     id,
     pricePaidInCents: int('price_paid_in_cents').notNull(),
-    productDetails: json('product_details')
+    productDetails: text('product_details')
         .notNull()
         .$type<{ name: string; description: string; imageUrl: string }>(),
     userId: varchar('user_id', { length: 255 })
@@ -22,7 +22,7 @@ export const PurchaseTable = mysqlTable('purchases', {
     vnpTransactionId: varchar('vnp_transaction_id', { length: 255 }).unique(),
     vnpTransactionDate: varchar('vnp_transaction_date', { length: 14 }),
     momoTransactionId: varchar('momo_transaction_id', { length: 255 }).unique(),
-    refundedAt: timestamp('refunded_at', { mode: 'date' }),
+    refundedAt: datetime('refunded_at'),
     createdAt,
     updatedAt,
 });

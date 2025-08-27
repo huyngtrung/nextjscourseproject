@@ -1,60 +1,60 @@
 CREATE TABLE `courses` (
-	`id` varchar(255) NOT NULL DEFAULT (UUID()),
+	`id` varchar(255) NOT NULL,
 	`name` text NOT NULL,
 	`description` text NOT NULL,
-	`created_at` datetime NOT NULL DEFAULT (NOW()),
-	`updated_at` datetime NOT NULL DEFAULT (NOW()),
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `courses_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `course_products` (
 	`course_id` varchar(255) NOT NULL,
 	`product_id` varchar(255) NOT NULL,
-	`created_at` datetime NOT NULL DEFAULT (NOW()),
-	`updated_at` datetime NOT NULL DEFAULT (NOW()),
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `course_products_course_id_product_id_pk` PRIMARY KEY(`course_id`,`product_id`)
 );
 --> statement-breakpoint
 CREATE TABLE `course_sections` (
-	`id` varchar(255) NOT NULL DEFAULT (UUID()),
+	`id` varchar(255) NOT NULL,
 	`name` text NOT NULL,
 	`status` enum('public','private') NOT NULL DEFAULT 'private',
 	`order` int NOT NULL,
 	`course_id` varchar(255) NOT NULL,
-	`created_at` datetime NOT NULL DEFAULT (NOW()),
-	`updated_at` datetime NOT NULL DEFAULT (NOW()),
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `course_sections_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `lessons` (
-	`id` varchar(255) NOT NULL DEFAULT (UUID()),
+	`id` varchar(255) NOT NULL,
 	`name` text NOT NULL,
 	`description` text,
 	`youtube_video_id` text NOT NULL,
 	`order` int NOT NULL,
 	`status` enum('public','private','preview') NOT NULL DEFAULT 'private',
 	`section_id` varchar(255) NOT NULL,
-	`created_at` datetime NOT NULL DEFAULT (NOW()),
-	`updated_at` datetime NOT NULL DEFAULT (NOW()),
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `lessons_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `products` (
-	`id` varchar(255) NOT NULL DEFAULT (UUID()),
+	`id` varchar(255) NOT NULL,
 	`name` text NOT NULL,
 	`description` text NOT NULL,
 	`image_url` text NOT NULL,
 	`price_in_dollars` int NOT NULL,
 	`status` enum('public','private') NOT NULL DEFAULT 'private',
-	`created_at` datetime NOT NULL DEFAULT (NOW()),
-	`updated_at` datetime NOT NULL DEFAULT (NOW()),
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `products_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `purchases` (
-	`id` varchar(255) NOT NULL DEFAULT (UUID()),
+	`id` varchar(255) NOT NULL,
 	`price_paid_in_cents` int NOT NULL,
-	`product_details` json NOT NULL,
+	`product_details` text NOT NULL,
 	`user_id` varchar(255) NOT NULL,
 	`product_id` varchar(255) NOT NULL,
 	`stripe_session_id` varchar(255),
@@ -63,9 +63,9 @@ CREATE TABLE `purchases` (
 	`vnp_transaction_id` varchar(255),
 	`vnp_transaction_date` varchar(14),
 	`momo_transaction_id` varchar(255),
-	`refunded_at` timestamp,
-	`created_at` datetime NOT NULL DEFAULT (NOW()),
-	`updated_at` datetime NOT NULL DEFAULT (NOW()),
+	`refunded_at` datetime,
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `purchases_id` PRIMARY KEY(`id`),
 	CONSTRAINT `purchases_stripe_session_id_unique` UNIQUE(`stripe_session_id`),
 	CONSTRAINT `purchases_vnp_transaction_id_unique` UNIQUE(`vnp_transaction_id`),
@@ -73,15 +73,15 @@ CREATE TABLE `purchases` (
 );
 --> statement-breakpoint
 CREATE TABLE `users` (
-	`id` varchar(255) NOT NULL DEFAULT (UUID()),
+	`id` varchar(255) NOT NULL,
 	`clerk_user_id` varchar(255) NOT NULL,
 	`email` text NOT NULL,
 	`name` text NOT NULL,
 	`role` enum('user','admin') NOT NULL DEFAULT 'user',
 	`image_url` text,
 	`deleted_at` datetime,
-	`created_at` datetime NOT NULL DEFAULT (NOW()),
-	`updated_at` datetime NOT NULL DEFAULT (NOW()),
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `users_id` PRIMARY KEY(`id`),
 	CONSTRAINT `users_clerk_user_id_unique` UNIQUE(`clerk_user_id`)
 );
@@ -89,16 +89,16 @@ CREATE TABLE `users` (
 CREATE TABLE `user_course_access` (
 	`user_id` varchar(255) NOT NULL,
 	`course_id` varchar(255) NOT NULL,
-	`created_at` datetime NOT NULL DEFAULT (NOW()),
-	`updated_at` datetime NOT NULL DEFAULT (NOW()),
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `user_course_access_user_id_course_id_pk` PRIMARY KEY(`user_id`,`course_id`)
 );
 --> statement-breakpoint
 CREATE TABLE `user_lesson_complete` (
 	`user_id` varchar(255) NOT NULL,
 	`lesson_id` varchar(255) NOT NULL,
-	`created_at` datetime NOT NULL DEFAULT (NOW()),
-	`updated_at` datetime NOT NULL DEFAULT (NOW()),
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `user_lesson_complete_user_id_lesson_id_pk` PRIMARY KEY(`user_id`,`lesson_id`)
 );
 --> statement-breakpoint

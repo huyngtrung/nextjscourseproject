@@ -1,16 +1,14 @@
-import { varchar, datetime } from 'drizzle-orm/mysql-core';
-import { sql } from 'drizzle-orm';
+import { varchar, timestamp } from 'drizzle-orm/mysql-core';
+import { randomUUID } from 'crypto';
 
 export const id = varchar('id', { length: 255 })
     .primaryKey()
     .notNull()
-    .default(sql`(UUID())`);
+    .$defaultFn(() => randomUUID());
 
-export const createdAt = datetime('created_at', { mode: 'date' })
-    .notNull()
-    .default(sql`(NOW())`);
+export const createdAt = timestamp('created_at').notNull().defaultNow();
 
-export const updatedAt = datetime('updated_at', { mode: 'date' })
+export const updatedAt = timestamp('updated_at')
     .notNull()
-    .default(sql`(NOW())`)
+    .defaultNow()
     .$onUpdate(() => new Date());
